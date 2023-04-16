@@ -30,18 +30,27 @@ class Player(GameSprite):
 
 hero1 = Player("rocet.jpg", 5, 50, 5, 30, 100)
 hero2 = Player("rocet.jpg", 675, 450, 5, 30, 100)
+ball =GameSprite("shar.jpg", 300,300, 5,15, 15)
+speed_x = 3
+speed_y = 3
 
 clock = time.Clock()
 window = display.set_mode((700, 500))
 
 game = True
 while game:
+    ball.rect.y += speed_y
+    ball.rect.x += speed_x
+
+
     window.fill((200,255,255))
 
     hero1.update_l()
     hero1.reset()
     hero2.update_r()
     hero2.reset()
+    ball.update()
+    ball.reset()
 
     for e in event.get():
         if e.type == QUIT:
